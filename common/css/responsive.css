@@ -1,0 +1,198 @@
+/* ==================================== タブレット向けレイアウト ================================= */
+
+/* ブレイクポイントが1000px以下のときのメディアクエリを設定 */
+@media (max-width: 1000px) {
+    .header-right a {
+        padding: 0 15px;
+        font-size: 15px;
+    }
+
+    #mail {
+        font-size: 24px;
+    }
+
+    .top-wrapper h1 {
+        font-size: 40px;
+    }
+
+    .top-wrapper_contact h2 {
+        font-size: 28px;
+    }
+
+    .top-wrapper_mente h2 {
+        font-size: 24px;
+    }
+
+    .heading h2 {
+        font-size: 20px;
+    }
+
+    .jobs {
+        /* Flexbox_子要素を折り返す */
+        flex-wrap: wrap;
+    }
+
+    .job {
+        /* Flexbox_widthを50％で2列表示 */
+        width: 50%;
+        margin-bottom: 50px;
+    }
+
+}
+
+/* ======================================= header微調整 ==================================== */
+@media (max-width: 800px) {
+    /* ----------------- header --------------- */
+    .header-right a {
+        padding: 0 13px;
+        font-size: 14px;
+    }
+
+}
+
+/* ======================================= スマホ向けレイアウト ==================================== */
+
+/* ブレイクポイントが670px以下の時のメディアクエリを設定 */
+@media (max-width: 670px) {
+    /* ----------------- header --------------- */
+    header {
+        padding-left: 15px;
+        padding-right: 0;
+    }
+
+    /* ------- PCタブレット用メニュー非表示 --------*/
+    .header-right {
+        display: none;
+    }
+
+    /* --------- ハンバーガーメニューの表示 -------- */
+    #humburger_menu {
+        display: block;
+    }
+
+    /* ---------------- top-wrapper ------------ */
+    .top-wrapper {
+        text-align: left;
+        padding-top: 130px;
+    }
+
+    .top-wrapper h1 {
+        font-size: 27px;
+    }
+
+    .top-wrapper p {
+        font-size: 14px;
+    }
+
+    .top-wrapper_contact h2 {
+        font-size: 24px;
+    }
+
+    .top-wrapper_mente h2 {
+        font-size: 20px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .facebook {
+        margin-bottom: 15px;
+    }
+
+    .twitter {
+        margin-bottom: 15px;
+    }
+    
+    /* ------------ business-wrapper ---------- */
+
+    .business-wrapper {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .digest {
+        font-size: 14px;
+        text-align: left;
+    }
+
+    /* -------------- jobs ---------- */
+    /* Flexbox_子要素を縦一列に表示 */
+    .jobs {
+        flex-direction: column;
+    }
+       
+    /* Flexbox_子要素の中央寄せ */
+    .job {
+         margin: 0 auto 50px;
+         width: 100%;
+    }
+
+    /* ------------ company-wrapper ---------- */
+    .company-wrapper {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    /* table */
+    table th {
+        width: 140px;
+    }
+
+    /* ------------ recruit-wrapper ---------- */
+    .recruit-wrapper {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    /* ---------------- footer ---------------- */
+    footer {
+        text-align: center;
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .sns {
+        font-size: 18px;
+    }
+    
+    .void_sns {
+        margin-right: 18px;
+    }
+
+    /* -------- ページの先頭へ戻るボタン ---------- */
+    #scrollTop {
+        border-radius   : 25px;
+        height          : 50px;
+        width           : 50px;
+        right           : 15px;
+        bottom          : 15px;
+    }
+
+    #scrollTop a {
+        font-size: 23px;
+        top            : 12px;
+    }
+
+    /* ------------ contact-wrapper ----------- */
+    .contact-wrapper p {
+        font-size: 14px;
+    }
+
+    .radio {
+        font-size: 14px;
+    }
+
+    .txt{
+        width: 100%;
+    }
+    
+    .txtarea {
+        width: 100%;
+    }
+
+    .submit {
+        width: 100%;
+    }
+
+  }

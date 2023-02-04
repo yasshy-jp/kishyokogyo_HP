@@ -1,0 +1,672 @@
+@charset"UTF-8";
+/* ウェブフォントの読込み */
+@import url('https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap');
+/* ====================================== 一般 ============================================*/
+/* スムーズスクロール */
+html { scroll-behavior: smooth;}
+
+/* 全ての要素に対し、borderとpaddingを要素サイズに含める */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Hiragino Kaku Gothic ProN";
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1170px;
+    width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.heading {
+    padding-top: 80px;
+    padding-bottom: 50px;
+    color: #5f5d60;
+}
+
+.heading h2 {
+    font-weight: normal;
+    font-size: 35px;
+    margin-bottom: 0px;
+}
+
+/* ------------------------- ボタン一般 -------------------------- */
+.btn {
+    padding: 8px 24px;
+    color: white;
+    display: inline-block;
+    opacity: 0.8;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* マウスが要素に重なった時のアクション */
+.btn:hover {
+    opacity: 1;
+}
+
+.detail {
+    background-color: #5dca88;
+    padding: 15px 40px;
+    box-shadow: 0px 7px #1a7940;
+    opacity: 0.85;
+}
+
+/* detailクラスがクリックされているときのCSSを指定 */
+.detail:active {
+    /* 影を消す設定 */
+    box-shadow: none;
+    /* 基準位置設定ではない。要素の位置を動かす設定。topやleftと併用で有効になる */
+    position: relative;
+    top: 7px;
+}
+
+/* ------------------------ 翻訳 --------------------------- */
+.translation {
+    margin-top: 5px;
+    margin-bottom: 30px;
+    font-size: 13px;
+    letter-spacing: 5px;
+}
+
+/* ------------------ ページの先頭へ戻るボタン ------------------ */
+#scrollTop {
+    border-radius   : 35px;
+    height          : 70px;
+    width           : 70px;
+    background-color: #5dca88;
+    /*background-color: yellowgreen;*/
+    opacity: 0.8;
+    position        : fixed;
+    right           : 30px;
+    bottom          : 30px;
+    text-align      : center;
+}
+
+#scrollTop a {
+    color          : #FFFFFF;
+    text-decoration: none;
+    font-size: 30px;
+    /* 相対配置(p253) */
+    position       : relative;
+    top            : 14px;
+    /* ブロックレベル要素へ変更。親要素を含めた全体がクリック可能になる */
+    display: block;
+}
+
+#scrollTop:hover {
+    opacity: 1;
+}
+
+/* ========================================== header ============================================*/
+/* -------------- header全般 -------------- */
+header {
+    height: 70px;
+    width: 100%;
+    padding: 0 15px 0 27px;
+    /* rgbaによる背景色のみの透明化 */
+    background-color: rgba(34, 49, 52, 0.9);
+    /* 要素の固定。スクロールしても動かん。top等の配置位置指示のプロパティと組み合せて使用 */
+    position: fixed;
+    top: 0px;
+    /* 要素の重なり順の指定 */
+    z-index: 10;
+}
+
+/* ------------------- header-left --------------- */
+.header-left {
+    float: left;
+    height: 70px;
+    width: 250px;
+    text-align: left;
+}
+
+.miniLogo{
+	vertical-align: middle;
+	display: inline-block;
+	margin-bottom: 15px;
+}
+
+.campanyName {
+    font-size: 25px;
+    /* ウェブフォント指定 */
+    font-family: 'Yuji Syuku', serif;
+    margin-left: 5px;
+    color: white;
+    /* 文字間隙間 */
+    letter-spacing: 3.5px;
+    line-height: 70px;
+}
+
+/* ---------- スマホ用ハンバーガーメニュー ---------- */
+#humburger_menu {
+    float: right;
+    width: 70px;
+    height: 50px;
+    margin: 0;
+    color: white;
+    display: none;
+}
+
+#humburger_menu dt {
+    font-size: 35px;
+    margin: 10px 0;
+
+}
+
+/* ---------------------- ハンバーガー(Jquery) --------------------- */
+/* ハンバーガーメニュー3本線が×に */
+/*ボタン外側※レイアウトによってpositionや形状は適宜変更のこと*/
+
+.openbtn{
+/*ボタン内側の基点となるためrelativeを指定。
+追従するナビゲーションの場合はfixed＋top、rightといった位置をセットで指定*/
+	position: relative;
+    /*background-color: rgba(34, 49, 52, 0.9);*/
+    /* マウス重なると指に変換 */
+	cursor: pointer;
+    width: 70px;
+    height:50px;
+	border-radius: 5px;
+}
+
+/*ボタン内側*/
+.openbtn span{
+    display: inline-block;
+    transition: all .4s;/*アニメーションの設定*/
+    position: absolute;
+    left: 20px;
+    height: 2px;
+    border-radius: 1px;
+	background: #fff;
+  	width: 47%;
+  }
+
+.openbtn span:nth-of-type(1) {
+	top: 11px;
+}
+
+.openbtn span:nth-of-type(2) {
+	top:23px;
+}
+
+.openbtn span:nth-of-type(3) {
+	top:35px;
+}
+
+/*activeクラスが付与されると線が回転して×に*/
+
+.openbtn.active span:nth-of-type(1) {
+    top: 18px;
+    left: 18px;
+    transform: translateY(6px) rotate(-45deg);
+    width: 40%;
+}
+
+.openbtn.active span:nth-of-type(2) {
+	opacity: 0;/*真ん中の線は透過*/
+}
+
+.openbtn.active span:nth-of-type(3){
+    top: 30px;
+    left: 18px;
+    transform: translateY(-6px) rotate(45deg);
+    width: 40%;
+}
+/* ------------------- ここまでハンバーガー(Jquery) ------------------ */
+
+/* ドロップダウンの要素 */
+#humburger_menu dd {
+    background-color: rgba(34, 49, 52, 0.9);
+    
+    text-align: center;
+    border-top: solid 1px #FFFFFF;
+    width: 235px;
+    margin-left: -165px;
+    display: none;
+}
+
+#humburger_menu a {
+    color: white;
+    line-height: 70px;
+    /* ブロック要素にしてリンク範囲を親要素まで拡大 */
+    display: block;
+}
+
+#humburger_menu a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ------------------------- header-right -------------------------- */
+.header-right {
+    float: right;
+    margin-right: -17px;
+}
+
+.header-right a {
+    /* 行間調整の応用。親要素(header)の高さの中心に文字が配置されるよう、親要素と同じheight値を設定 */
+    line-height: 70px;
+    padding: 0 25px;
+    color: white;
+    /* ブロック要素にしてリンク範囲を親要素まで拡大 */
+    display: block;
+    float: left;
+    /* アニメーションをつける。「変化の対象」と「変化にかかる時間」を指定。hoverと組み合わせて使用 */
+    transition: all 0.5s;
+}
+
+/* マウスが重なった時のアクション */
+.header-right a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+#mail {
+    font-size: 28px;
+}
+
+/* ================================ top-wrapper(メインメッセージ) ===============================*/
+
+.top-wrapper {
+    padding: 180px 0 100px 0;
+    /* 背景画像 */
+    background-image: url("../images/main_egb.jpg");
+    background-size: cover;
+    color: white;
+    text-align: center;
+}
+
+.top-wrapper h1 {
+    /* 要素を透明 */   
+    opacity: 0.9;
+    font-size: 50px;
+    letter-spacing: 5px;
+}
+
+.top-wrapper p {
+    /* 要素を透明 */
+    opacity: 0.9;
+    font-size: 17px;
+}
+
+.top-wrapper_contact {
+    padding: 180px 0 100px 0;
+    background-image: url("../images/shimanami.jpg");
+    background-position: center bottom -28px; 
+    background-size: cover;
+    color: white;
+    text-align: center;
+}
+
+.top-wrapper_contact h2 {
+    font-size: 35px;
+}
+
+.top-wrapper_mente {
+    padding: 180px 0 100px 0;
+    /* 背景画像 */
+    background-image: url("../images/shimanami38bc_mono.jpg");
+    background-size: cover;
+    color: white;
+    text-align: center;
+    padding: 100px 0 450px 0;
+}
+
+.top-wrapper_mente h2 {
+    color: white;
+    font-size: 28px;
+}
+
+.void_mente {
+    margin-right: 10px;
+}
+
+/* ===================================== btn-wrapper(ボタン) ===================================*/
+
+.btn-wrapper {
+    margin: 20px 0;
+}
+
+.btn-wrapper p {
+    margin: 10px 0;
+}
+
+.sample {
+    background-color: #239b76;
+    margin-bottom: 20px;
+}
+
+.facebook {
+    background-color: #3b5998;
+    margin-right: 10px;
+}
+  
+.twitter {
+    background-color: #55acee;
+    margin-right: 10px;
+}
+
+.instagram {
+    background-color: #E34EAD;
+}
+
+/* ==================================== business-wrapper =====================================*/
+
+.business-wrapper {
+    padding-bottom: 80px;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: #f7f7f7;
+    text-align: center;
+}
+
+.jobs {
+    /* Flexbox_子要素を横並びにする */
+    display: flex;
+    padding-bottom: 50px;
+}
+
+.job {
+    /* Flexbox_親要素に合わせて画面幅一杯に広がる */
+    flex: auto;
+    width: 25%;
+}
+
+.job-icon {
+    /* 要素同士を重ねる。(親)要素の左上を基準位置に設定 */
+    position: relative;
+}
+
+.job-icon p {
+    /* 要素同士を重ねる。(子)要素の設定。サイト全体の左上が基準 */
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    color: white;
+}
+
+.txt-contents {
+    width: 80%;
+    /* インラインブロック要素へ変更。元はブロック要素だが、横並びが可能になるが、
+    何故、これをしないとテキストが中央揃えにならんのか分からん？ */
+    display: inline-block;
+    margin: 15px;
+    font-size: 13px;
+    color: #b3aeb5;
+}
+
+/* ==================================== company-wrapper ====================================== */
+
+.company-wrapper {
+    padding-bottom: 80px;
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: center;
+    background-color: #F4E1B1;
+}
+
+.company-wrapper img {
+    display: inline-block;
+    margin-bottom: 50px;
+    padding-right: 5px;
+} 
+
+.infomation {
+    padding: 0 0 50px;
+    color: #5f5d60;
+}
+
+table {
+    /* 掛線と掛線の隙間を無くす */
+    border-collapse: collapse;
+    width: 100%;
+    font-size    : 14px;
+    line-height  : 2;
+}
+
+table td,th {
+    border-bottom: 1px solid #F4E1B1;
+}
+
+table th {
+    background-color: #5E5F62;
+    color: #FFFFFF;
+    width: 200px;
+    padding: 10px;
+    font-weight: normal;
+    text-align: center;
+}
+
+table td {
+    text-align: left;
+    padding      : 10px 10px 10px 20px;
+    background-color: #949799;
+    background-color: rgba(148, 151, 153, 0.3);
+}
+
+/* ======================================= recruit-wrapper =================================== */
+
+.recruit-wrapper {
+    background-color: #f7f7f7;
+    padding-bottom: 80px;
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: center;
+}
+
+.recruit-wrapper th,
+.recruit-wrapper td {
+    border-bottom: 1px solid #FFFFFF;
+}
+
+/* ======================================= garerry-wrapper ===================================== */
+
+.garrery-wrapper{
+    background-image: url("../images/er.jpg");
+    background-size: cover;
+}
+
+.void_garrery {
+    padding: 400px 0;
+}
+
+/* ======================================= access-wrapper ===================================== */
+
+.access-wrapper {
+    background-color: #f7f7f7;
+    text-align: center;   
+}
+
+iframe {
+	/* 要素に対する縦方向の位置揃えを変更し、Map下部の余白を消す */
+	vertical-align: bottom;
+}
+
+/* ========================================== footer ========================================= */
+
+footer {
+    background-color: rgba(34, 49, 52, 0.9);
+    padding: 25px 30px 35px 20px;
+    height: 170px;
+    color: white;
+}
+
+.footer-right {
+    float: right;
+    text-align: center;
+    width: 210px;
+    color: white;
+}
+
+.footer-right p {
+    text-align: right;    
+}
+
+.ad {
+    font-size: 14px;
+    margin: 0 10px 5px 0;
+}
+
+.tel {
+    font-size: 14px;
+    margin: 0 10px 0 0;
+}
+
+.sns {
+    background-color: rgba(34, 49, 52, 0.9);
+    text-align: center;
+    padding-bottom: 10px;
+    font-size: 22px;
+}
+
+.icon {
+    color: #FFFFFF;
+}
+
+.void_sns {
+    margin-right: 20px;
+}
+
+#copyright {
+    clear: left;
+    background-color: rgba(34, 49, 52, 0.9);
+    font-size  : 14px;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0;
+    padding-bottom: 15px;
+}
+
+/* ========================================== contact ========================================= */
+
+.contact-wrapper {
+    padding-bottom: 100px;
+}
+
+/* プライバシーポリシーボタン */
+.btn_privacy a {
+    /* 注意！ aはインライン要素 */
+    font-size       : 16px;
+    /* リンクの下線を消す */
+    text-decoration : none;
+    color           : #FFFFFF;
+    background-color: #EB8DCB;
+    padding         : 12px 20px;
+    border-radius   : 30px;
+    /* インライン要素の特徴を持ちながらブロックレベル要素のように扱い可能になる(p244) */
+    display         : inline-block;
+}
+
+.mgr-10 {
+    margin-right: 10px;
+    /* spanタグで右側に空白を作る */
+}
+
+.btn_privacy a:hover {
+    /* マウスが重なったら変色 */
+    background-color:  dodgerblue;
+    color: floralwhite;
+}
+
+.btn_privacy a {
+    /* 変色アニメーションの速度設定 */
+    transition: all 0.5s;
+}
+
+/* 必須マーク */
+.required{
+    background: #da7489;
+    color: white;
+    font-size: 16px;
+    padding: 3.5px 11px;
+    border-radius: 12px;
+    display: inline-block;
+    margin-left: 8px;
+    line-height: 1;
+}
+
+.radio {
+    margin-right: 3px;
+    margin-bottom: 40px;
+}
+
+.void_radio {
+    margin-right: 15px;
+}
+
+.form {
+    color: #5f5d60;
+}
+
+.form p:nth-child(1) {
+    margin-bottom: 20px;
+}
+
+.form p {
+    margin-bottom: 8px;
+}
+ 
+.txt{
+    display: inline-block;
+    width: 600px;
+    padding: 0.5em;
+    border: 1px solid #CCCCCC;
+    margin-bottom: 40px;
+}
+
+.txtarea {
+    display: inline-block;
+    width: 600px;
+    padding: 0.5em;
+    border: 1px solid #CCCCCC;
+    margin-bottom: 30px;
+}
+
+/* 送信ボタン */
+.submit {
+    margin-top: 30px;
+    background-color: #5dca88;
+    box-shadow: 0px 7px #1a7940;
+    opacity: 0.8;
+    width: 200px;
+    height: 50px;
+    color: #FFFFFF;
+    border: solid 0;
+    border-radius: 4px;
+    /* マウス重なると指に変換 */
+    cursor: pointer;
+}
+
+.submit:hover {
+    opacity: 1;
+}
+
+/* ======================================= sticky(紙芝居風) =====================================*/
+
+section.fixed{
+	position: -webkit-sticky;/*Safari*/
+	position: sticky;
+	top: 70px;/*Header高さ分で止まるようにする
+	/*padding: 600px 0;/*デモ画面の高さを持たすための上下余白*/
+    padding-top: 0;
+}
+
+/* ----------タブレット以下の見え方 ------------ */
+
+@media screen and (max-width:768px){
+	section.fixed{
+	position:relative!important;/*sticky解除*/
+	top:0;/*70px⇒0pxに戻す*/
+}
+
+	/*section.fixed:first-of-type{
+	padding-top:100px;
+	/*最初の要素は上部にHeaderの高さ以上の余白をとる*/
+	}
