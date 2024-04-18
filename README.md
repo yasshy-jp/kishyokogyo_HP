@@ -1,2 +1,2 @@
-### ■希翔工業株式会社コーポレートサイト
+### ■希翔工業コーポレートサイト
 http://kishyokogyo.starfree.jp
